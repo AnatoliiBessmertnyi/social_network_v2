@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-  <title>{{ title }}</title>
+  <title>Последние обновления на сайте</title>
   </head>
   <body>
     <header>
       {% include 'includes/header.html' %}    
     </header>
     <main> 
-      <!-- класс py-5 создает отступы сверху и снизу блока -->
       <div class="container py-5">     
-        <h1>{{ text }}</h1>
         <article>
           {% for post in posts %}
           <ul>
