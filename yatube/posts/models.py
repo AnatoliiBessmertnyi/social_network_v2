@@ -14,10 +14,18 @@ class Post(models.Model):
     )
     group = models.ForeignKey(
         'Group',
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         blank=True,
         null=True,
+        related_name='posts'
     )
+
+    class Meta:  # Объявили мета класс и в нем метод сортировки
+        ordering = ['-pub_date']
+
+# Очень слабо понял этот момент, работает все и без этого
+    #def __str__(self):  # Добавлен метод __str__
+        #return s[i:j] = t ' slice of s from i to j' = 't это отрезок s от i до j'
 
 
 class Group(models.Model):
