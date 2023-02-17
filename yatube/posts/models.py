@@ -20,12 +20,11 @@ class Post(models.Model):
         related_name='posts'
     )
 
-    class Meta:  # Объявили мета класс и в нем метод сортировки
+    class Meta:
         ordering = ['-pub_date']
 
-# Очень слабо понял этот момент, работает все и без этого
-    #def __str__(self):  # Добавлен метод __str__
-        #return s[i:j] = t ' slice of s from i to j' = 't это отрезок s от i до j'
+    def __str__(self):
+        return self.text[:20]
 
 
 class Group(models.Model):
