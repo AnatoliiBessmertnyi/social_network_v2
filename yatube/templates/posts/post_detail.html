@@ -1,8 +1,6 @@
 {% extends "base.html" %}
+{% block title %}Пост {{ post.text|truncatechars:30 }}{% endblock %}
 {% block content %}
-  <head>
-    <title>Пост {{ post.text|truncatechars:30 }}</title>
-  </head>
   <body>
     <main>
       <div class="row">

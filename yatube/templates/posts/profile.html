@@ -1,8 +1,6 @@
 {% extends "base.html" %}
+{% block title %}Профайл пользователя "{{ author.get_full_name }}"{% endblock %}
 {% block content %}
-  <head>  
-    <title>Профайл пользователя "{{ author.get_full_name }}"</title>
-  </head>
   <body>       
     <main>
       <div class="container py-5">        
