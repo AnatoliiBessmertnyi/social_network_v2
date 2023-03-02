@@ -57,43 +57,11 @@ def post_detail(request, post_id):
 def post_create(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
-        context = {
-            'form': form
-        }
         if form.is_valid():
             post = form.save(commit=False)
-            post.author_id = request.user.id
-            user = request.user.username
+            post.author = request.user
             post.save()
-            return redirect('posts:profile', user)
-        return render(request, 'posts/create_post.html', context)
+            return redirect('posts:profile', request.user.username)
+        return render(request, 'posts/create_post.html', {'form': form})
     form = PostForm()
-    context = {
-        'form': form,
-    }
-    return render(request, 'posts/create_post.html', context)
-
-#       if request.method == 'POST':
-#         form = ExchangeForm(request.POST)
-#         if form.is_valid():
-#             name = form.cleaned_data['name']
-#             email = form.cleaned_data['email']
-#             title = form.cleaned_data['title']
-#             artist = form.cleaned_data['artist']
-#             genre = form.cleaned_data['genre']
-#             price = form.cleaned_data['price']
-#             comment = form.cleaned_data['comment']
-#             return redirect('/thank-you/')
-#         return render(request, 'index.html', {'form': form})
-#     form = ExchangeForm()
-#     return render(request, 'index.html', {'form': form}) 
-    
-# def thank_you(request):
-#     return render(request, 'thankyou.html')
-#     if request.method == 'POST':
-#     form = ExchangeForm(request.POST)
-#     context = {
-
-#     }
-
-#     return render(request, 'posts/post_create.html', context)
+    return render(request, 'posts/create_post.html', {'form': form}) 
